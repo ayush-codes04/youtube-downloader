@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+        <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/youtube-logo.png')}}">
+        <!-- jinja2 syntax to link multiple html files head -->
+        {% block head %}{% endblock %}
+    </head>
+    <body class="body">
+        <!-- jinja2 syntax to link multiple html files body -->
+        {% block body %}{% endblock %}
+    </body>
+</html>

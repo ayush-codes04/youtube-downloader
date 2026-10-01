@@ -1,0 +1,47 @@
+
+<!-- Links this file to base.html -->
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Youtube Video to mp3 Downloader</title>
+{% endblock %}
+
+{% block body %}
+
+    <div class="header">
+            <img class="logo" src="{{ url_for('static', filename='images/youtube-logo.png')}}">
+            <h3 class="title">Youtube Video to mp3 Downloader</h3>
+    </div>
+
+    <div class="template">
+        <h1 class="head"><b><span class="line">Youtube Video</span><br>to mp3 Downloader</b></h1>
+    </div>
+
+    <!-- Takes the input from the textfield and sends to python logic -->
+    <form action="{{ url_for('audio_download') }}" method="POST">
+        <div class="searchbox">
+            <div class="searchbar">
+                <!-- "required" keyword makes the input unacceptable to null value -->
+                <input name="input" class="search" type="text" required placeholder="   Paste Your Youtube Link Here...">
+                <input type="hidden" name="action" value="fetch">
+                <button class="next"><b>Start &rarr;</b></button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Links the video_home.html to the button -->
+    <div class="link">
+        <a href="{{ url_for('video_home') }}">
+            <button class="convert">mp4 Downloader</button>
+        </a>
+    </div>
+
+    <div class="instruction">
+        <h3 class="instructions">How to Download Youtube videos in HD Quality?</h3>
+        <p class="instructions">1. Paste the Link of the video you want to download 
+            <br><br>2. Click "Start" button to begin converting process
+            <br><br>3. Click the "Download" button
+        </p>
+    </div>
+        
+{% endblock %}

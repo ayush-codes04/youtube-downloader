@@ -1,0 +1,94 @@
+
+<!-- links this file to base.html -->
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Youtube Video Downloader</title>
+{% endblock %}
+
+{% block body %}
+
+    <div class="header">
+        <img class="logo" src="{{ url_for('static', filename='images/youtube-logo.png')}}">
+        <h3 class="title">Youtube Video Downloader</h3>
+    </div>
+
+    <div class="template">
+        <h1 class="head"><b>Youtube Video <br><span class="space">Downloader</span></b></h1>
+    </div>
+
+    <!-- Sends the request back to home page -->
+    <form action="/" method="POST">
+        <div class="searchbox">
+            <div class="searchbar">
+                <input name="input" class="search" type="text" placeholder="   Paste Your Youtube Link Here...">
+                <input type="hidden" name="action" value="fetch">
+                <button class="next"><b>Start &rarr;</b></button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Links the audio_home.html to the button -->
+    <div class="link">
+        <a href="{{ url_for('audio_home')}}">
+            <button class="convert">mp3 Downloader</button>
+        </a>
+    </div>
+
+    <!-- Shows errors in the webpage -->
+    {% if status %}
+        <div class="error">
+            <h2><strong>{{status}}</strong></h2>
+        </div>
+    {% endif %}
+
+    <!-- Shows thumbnail and title on webpage extracted by python -->
+    <div class="preview">
+        <div>
+            <img src="{{ thumbnail }}" alt="Video Thumbnail" class="thumbnail">
+            <h3 class="video">{{ video_title }}</h3>
+        </div>
+    </div>
+
+    <div>
+        <!-- Takes input from the buttons from the value assigned to the buttons and send to python -->
+        <form method="POST" action="/video/quality">
+            <input type="hidden" name="input" value="{{ video_url }}">
+            <input type="hidden" name="action" value="download">
+            
+            <div class="qualitybox">
+                <h3 class="quality">Download Quality 1080p</h3>
+                <button class="download" type="submit" name="quality" value="1080">Download</button>
+            </div>
+            <div class="qualitybox">
+                <h3 class="quality">Download Quality 720p</h3>
+                <button class="download" type="submit" name="quality" value="720">Download</button>
+            </div>
+            <div class="qualitybox">
+                <h3 class="quality">Download Quality 480p</h3>
+                    <button class="download" type="submit" name="quality" value="480">Download</button>
+            </div>
+            <div class="qualitybox">
+                <h3 class="quality">Download Quality 360p</h3>
+                <button class="download" type="submit" name="quality" value="360">Download</button>
+            </div>                  
+            <div class="qualitybox">
+                <h3 class="quality">Download Quality 240p</h3>
+                <button class="download" type="submit" name="quality" value="240">Download</button>
+            </div>
+            <div class="qualitybox">
+                <h3 class="quality">Download Quality 144p</h3>
+                <button class="download" type="submit" name="quality" value="144">Download</button>
+            </div>
+        </form>
+    </div>
+        
+    <div class="instruction">
+        <h3 class="instructions">How to Download Youtube videos in HD Quality?</h3>
+        <p class="instructions">1. Paste the Link of the video you want to download 
+            <br><br>2. Click "Start" button to begin converting process
+            <br><br>3. Choose the quality you want to download and Click the "Download" button
+        </p>
+    </div>
+        
+{% endblock %}
