@@ -1,0 +1,23 @@
+# Virtual Environment
+env/
+venv/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Executables & Binaries (Do NOT push FFmpeg)
+*.exe
+ffmpeg.exe
+ffprobe.exe
+
+# Temporary video/audio downloads created by users testing the app
+downloads/
+*.mp4
+*.webm
+*.m4a
+*.mp3
+
+# Environment variables / secrets
+.env
